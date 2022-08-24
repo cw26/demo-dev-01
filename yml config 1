@@ -1,24 +1,14 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-    name: nginx-deployment
-    lables:
-        app: nginx-app
-    spec:
-        replicas: 3
-        selector:
-            matchlables:
-                type: front-end
-        template:
-            metadata:
-                name: nginx-pod
-                labels:
-                    env: prod-pod
-                    type: front-end
-                    identifier: nginx-fe-prod-pod
-                spec:
-                    containers:
-                        - name: nginx-ctr
-                            image: nginx
-                        ports:
-                        - containerPort: 80
+    name: nginx-pod
+    labels:
+        env: prod-pod
+        type: front-end
+        identifier: nginx-fe-prod-pod
+        spec:
+            containers:
+                - name: nginx-ctr
+                    image: nginx
+                ports:
+                - containerPort: 80
